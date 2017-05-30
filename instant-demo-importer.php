@@ -125,22 +125,22 @@ if(!class_exists('Instant_Demo_Importer')) :
 			$path = $demo_dir_path.$folder;
 			
 			/** Site Content Import **/
-			$this->fetch_attachments = true;
-			$this->import($path.'/content.xml');
+			/*$this->fetch_attachments = true;
+			$this->import($path.'/content.xml');*/
 
 			/** Set Theme Options **/
-			$this->set_theme_options($path.'/theme_options.dat');
+			// $this->set_theme_options($path.'/theme_options.dat');
 
 			/** Set Customizer Options **/
-			$this->set_customizer_options($path.'/customizer_options.dat');
+			// $this->set_customizer_options($path.'/customizer_options.dat');
 
 			/** Set Widgets **/
-			$this->save_widgets($path.'/widgets.wie');
+			// $this->save_widgets($path.'/widgets.wie');
 
 			/** Set Featured Home Page **/
-			if($homepage) {
+			/*if($homepage) {
 				$this->set_home_page($homepage);
-			}
+			}*/
 
 			/** Configure Menus **/
 			if( $mmenu != '' ) {
@@ -405,7 +405,7 @@ if(!class_exists('Instant_Demo_Importer')) :
 				$menu_arr = explode('|', $menu);
 
 				foreach($menu_arr as $menu_single_ar) {
-					$mens = explode('&#62;', $menu_single_ar);
+					$mens = explode('&gt;', $menu_single_ar);
 
 					$rows = $wpdb->get_results("SELECT * FROM $table_db_name where name='".$mens[0]."'",ARRAY_A);
 
