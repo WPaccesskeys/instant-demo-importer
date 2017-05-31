@@ -154,7 +154,7 @@ if(!class_exists('Instant_Demo_Importer')) :
 		public function set_theme_options($filepath) {
 			
 			if(file_exists($filepath)) {
-				$opt_unserialized = file_get_contents($filepath, true); var_dump($this->option_name);
+				$opt_unserialized = file_get_contents($filepath, true);
 				$options = unserialize($opt_unserialized);
 				
 				$options = $this->recursive_array_replace(esc_html($this->options_replace_url), get_site_url(), $options);
