@@ -154,11 +154,11 @@ if(!class_exists('Instant_Demo_Importer')) :
 		public function set_theme_options($filepath) {
 			
 			if(file_exists($filepath)) {
-				$opt_unserialized = file_get_contents($filepath, true);
+				$opt_unserialized = file_get_contents($filepath, true); var_dump($this->option_name);
 				$options = unserialize($opt_unserialized);
 				
-				$options = $this->recursive_array_replace(esc_html($options_replace_url), get_site_url(), $options);
-				update_option( esc_attr($option_name), $options );
+				$options = $this->recursive_array_replace(esc_html($this->options_replace_url), get_site_url(), $options);
+				update_option( $this->option_name, $options );
 			}
 
 		}
