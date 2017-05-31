@@ -400,6 +400,7 @@ if(!class_exists('Instant_Demo_Importer')) :
 				global $wpdb;
 				$table_db_name = $wpdb->prefix . "terms";
 				$menu_ids = array();
+				$save_menu = '';
 
 				$menu = rtrim($menu, '|');
 				$menu_arr = explode('|', $menu);
@@ -417,11 +418,12 @@ if(!class_exists('Instant_Demo_Importer')) :
 			             continue;
 			        }
 			        else {
-			            set_theme_mod( 'nav_menu_locations', array_map( 'absint', array( $mens[1] =>$menu_ids[$mens[0]] ) ) );
+			        	$save_menu[$mens[1]] = $menu_ids[$mens[0]];
 			        }
-
-			        set_theme_mod( 'nav_menu_locations', array_map( 'absint', array( $mens[1] =>$menu_ids[$mens[0]] ) ) );
+			        $save_menu[$mens[1]] = $menu_ids[$mens[0]];
 				}
+
+				set_theme_mod('nav_menu_locations', $save_menu);
 			}
 
 		}
