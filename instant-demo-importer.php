@@ -155,9 +155,15 @@ if(!class_exists('Instant_Demo_Importer')) :
 			
 			if(file_exists($filepath)) {
 				$opt_unserialized = file_get_contents($filepath, true);
-				$options = unserialize($opt_unserialized);
+
+				$data = preg_replace_callback('!s:(\d+):"(.*?)";!', function($m) {
+				      return 's:' . strlen($m[2]) . ':"' . $m[2] . '";';
+				}, $opt_unserialized);
+
+				$unserialized_data = unserialize($data);
 				
-				$options = $this->recursive_array_replace(esc_html($this->options_replace_url), get_site_url(), $options);
+				$options = $this->recursive_array_replace(esc_html($this->options_replace_url), get_site_url(), $unserialized_data);
+
 				update_option( $this->option_name, $options );
 			}
 
