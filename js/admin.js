@@ -24,7 +24,8 @@ jQuery(document).ready(function ($) {
             'menu': menu,
             'homepage': homepage,
             }),
-            success: function(response){ alert(response);
+            success: function(response){
+            	alert(IDMObject.demo_import_success);
                 el.removeClass('installing');
 				el.html(IDMObject.demo_installed);
             }
